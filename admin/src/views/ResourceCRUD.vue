@@ -11,6 +11,7 @@
       @row-del="remove"
       @on-load="changePage"
       @sort-change="changeSort"
+      @search-change="search"
     ></avue-crud>
   </div>
 </template>
@@ -30,7 +31,8 @@ export default class ResourceList extends Vue {
   query = {
     limit: 2,
     page: 1,
-    sort: {}
+    sort: {},
+    where: ""
   };
   async changePage({ pageSize, currentPage }) {
     this.query.page = currentPage;
@@ -46,6 +48,18 @@ export default class ResourceList extends Vue {
       };
     }
     this.fecth();
+  }
+  async search(where, done) {
+    // if ( k in where) {
+    //   const field = this.option.column.find(v => v.prop === k);
+    //   if (field.regex) {
+    //     where[k] = { $regex: where[k] };
+    //   }
+    // }
+    where.name = { $regex: where.name };
+    this.query.where = where;
+    this.fecth();
+    done();
   }
   async fecth() {
     const res = await this.$http.get(`${this.resource}`, {

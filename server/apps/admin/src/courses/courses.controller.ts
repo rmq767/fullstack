@@ -18,15 +18,24 @@ export class CoursesController {
   option() {
     return {
       title: '课程管理',
+      searchMenuSpan: 8,
       column: [
         {
           label: '课程名称',
           prop: 'name',
           sortable: true,
+          search: true,
+          regex: true,
+          row: true,
         },
         {
           label: '课程封面图',
           prop: 'cover',
+          type: 'upload',
+          listType: 'picture-img',
+          row: true,
+          width: 120,
+          action: '/upload',
         },
       ],
     };

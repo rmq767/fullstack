@@ -4,13 +4,13 @@ import "./plugins/element";
 import "./plugins/avue";
 import router from "./router";
 import axios from "axios";
-// import EleFrom from "vue-ele-form";
 
-Vue.config.productionTip = false;
-Vue.prototype.$http = axios.create({
+const http = axios.create({
   baseURL: "http://localhost:3000"
 });
-// Vue.use(EleFrom);
+Vue.config.productionTip = false;
+Vue.prototype.$http = http;
+Vue.prototype.$httpajax = http;
 
 new Vue({
   router,

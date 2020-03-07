@@ -1,5 +1,4 @@
-import { Episode } from './episode.model';
-import { prop, modelOptions, arrayProp, Ref } from '@typegoose/typegoose';
+import { prop, modelOptions } from '@typegoose/typegoose';
 import { ApiProperty } from '@nestjs/swagger';
 
 @modelOptions({
@@ -14,6 +13,4 @@ export class Course {
   @prop()
   @ApiProperty({ description: '封面图' })
   cover: string;
-  @arrayProp({ itemsRef: 'Episode' })
-  episodes: Ref<Episode>[];
 }

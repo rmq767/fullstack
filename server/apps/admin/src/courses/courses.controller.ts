@@ -27,6 +27,7 @@ export class CoursesController {
           search: true,
           regex: true,
           row: true,
+          span: 24,
         },
         {
           label: '课程封面图',

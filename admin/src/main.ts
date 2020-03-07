@@ -6,7 +6,7 @@ import router from "./router";
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: process.env.VUE_APP_API_URL
 });
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;

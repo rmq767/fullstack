@@ -6,8 +6,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors(); //配置跨域
   const options = new DocumentBuilder()
-    .setTitle('后台管理API')
-    .setDescription('供后台管理界面调用的服务端接口API')
+    .setTitle('前端API')
+    .setDescription('供网站和app调用的服务端接口API')
+    .addBearerAuth()
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
